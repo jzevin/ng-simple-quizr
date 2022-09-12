@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { QuizInfoComponent } from '../quiz-info/quiz-info.component';
 import { QuizNavComponent } from './quiz-nav.component';
 
 describe('QuizNavComponent', () => {
@@ -8,7 +9,7 @@ describe('QuizNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuizNavComponent ]
+      declarations: [ QuizNavComponent, QuizInfoComponent ]
     })
     .compileComponents();
 
