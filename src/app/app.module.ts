@@ -30,7 +30,7 @@ import { quizStateReducer } from './state/quiz.state.reducers';
   BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot({ quiz: quizStateReducer }),
+    StoreModule.forRoot({'quiz': quizStateReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([QuizEffects])
   ],

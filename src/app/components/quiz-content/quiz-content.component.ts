@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { selectQuizState, selectQuizStateCurrentQuestion } from '../../state/quiz.state.selectors';
 
 import { Observable } from 'rxjs';
 import { QuizState } from 'src/app/models/quiz.models';
 import { Store } from '@ngrx/store';
 import { quizActions } from '../../state/quiz.state.actions';
-import { selectQuizState } from '../../state/quiz.state.selectors';
 
 @Component({
   selector: 'qzr-quiz-content',
@@ -14,6 +14,7 @@ import { selectQuizState } from '../../state/quiz.state.selectors';
 export class QuizContentComponent implements OnInit {
 
   quizState$: Observable<QuizState> = this.store.select(selectQuizState);
+  currentQuestion$ = this.store.select(selectQuizStateCurrentQuestion);
 
   constructor(private store: Store) { }
 

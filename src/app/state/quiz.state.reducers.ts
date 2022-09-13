@@ -7,6 +7,7 @@ import { quizActions } from './quiz.state.actions';
 
 const initialQuizState: QuizState = {
   questions: [],
+  currentQuestionIndex: 0,
   error: null,
   loading: false,
 };

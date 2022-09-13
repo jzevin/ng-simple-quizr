@@ -1,9 +1,11 @@
-<div class="question">
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima optio beatae consequatur voluptatem culpa magni ad officia repudiandae et dolores officiis reprehenderit quibusdam corrupti, illo molestias eligendi animi mollitia tempora?</p>
-</div>
-<ol class="answers">
-  <li class="answer">Lorem, ipsum dolor.</li>
-  <li class="answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, ea.</li>
-  <li class="answer">Lorem ipsum dolor sit amet.</li>
-  <li class="answer">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi quia quae cupiditate ea beatae omnis veniam laborum dolore corporis.</li>
-</ol>
+<ng-container *ngIf="currentQuestion$ | async as currentQuizItem">
+  <!-- {{ currentQuizItem | json }} -->
+  <div class="question">
+    <p>{{ currentQuizItem.question }}</p>
+  </div>
+  <ol class="options">
+    <li class="option" *ngFor="let option of currentQuizItem.options;let i = index">
+      {{ i + 1 }}. {{ option }}
+    </li>
+  </ol>
+</ng-container>
