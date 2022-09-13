@@ -9,7 +9,12 @@ export const selectQuizState = createSelector(
   (state: QuizState) => state,
 );
 
-export const selectQuizStateCurrentQuestion = createSelector(
+export const selectCurrentQuestion = createSelector(
   quizFeature,
   (state: QuizState) => state.questions[state.currentQuestionIndex],
+);
+
+export const selectCurrentQuestionIndex = createSelector(
+  quizFeature,
+  (state: QuizState) => state.currentQuestionIndex,
 );
