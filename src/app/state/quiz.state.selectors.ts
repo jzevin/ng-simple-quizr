@@ -22,3 +22,14 @@ export const selectCurrentQuestionIndex = createSelector(
   quizFeature,
   (state: QuizState) => state.currentQuestionIndex,
 );
+
+export const selectTheme = createSelector(
+  quizFeature,
+  (state: QuizState) => state.theme,
+);
+
+export const selectZoom = createSelector(
+  quizFeature,
+  (state: QuizState) => state.zoom,
+);
+

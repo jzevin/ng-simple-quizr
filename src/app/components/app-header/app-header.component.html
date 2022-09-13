@@ -2,6 +2,6 @@
   <h1>Quizr</h1>
   <div class="app-settings">
     <button>Zoom</button>
-    <button>toggle theme</button>
+    <button class="theme-btn" (click)="onClickToggleTheme()">{{theme === 'light' ? 'dark' : 'light'}} theme</button>
   </div>
 </header>

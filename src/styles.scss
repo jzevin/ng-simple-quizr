@@ -1,15 +1,111 @@
 body {
   font-family: sans-serif;
+  margin: 0;
 }
-p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, blockquote, figure, pre, hr, table, fieldset, form, input, textarea, p, button, select, legend {
+
+:root {
+  --gray-0: #fff;
+  --gray-50: #f2f2f3;
+  --gray-100: #e4e6e7;
+  --gray-200: #caccce;
+  --gray-300: #afb3b6;
+  --gray-400: #959a9d;
+  --gray-500: #7a8085;
+  --gray-600: #62676a;
+  --gray-700: #494d50;
+  --gray-800: #313335;
+  --gray-850: #1f2123;
+  --gray-900: #181a1b;
+  --gray-950: #0d0e0f;
+  --gray-1000: #000;
+
+  --blue-50: #ebf4fa;
+  --blue-100: #d7e8f4;
+  --blue-200: #afd2e9;
+  --blue-300: #87bbde;
+  --blue-400: #5fa4d3;
+  --blue-500: #378ec8;
+  --blue-600: #2c71a0;
+  --blue-700: #215578;
+  --blue-800: #163950;
+  --blue-900: #0b1c28;
+}
+.theme-light {
+  --primary-fg: var(--gray-900);
+  --primary-bg: var(--gray-100);
+  --secondary-fg: var(--gray-400);
+  --secondary-fg2: var(--gray-300);
+  --secondary-bg: var(--gray-200);
+  --tertiary-fg: var(--gray-700);
+  --tertiary-bg: var(--gray-50);
+  --secondary-inactive: var(--gray-400);
+  --secondary-active: var(--gray-800);
+  --secondary-active-fg: var(--gray-50);
+}
+.theme-dark {
+  --primary-fg: var(--gray-100);
+  --primary-bg: var(--gray-900);
+  --secondary-fg: var(--gray-700);
+  --secondary-fg2: var(--gray-800);
+  --secondary-bg: var(--gray-900);
+  --tertiary-fg: var(--gray-50);
+  --tertiary-bg: var(--gray-850);
+  --secondary-inactive: var(--gray-500);
+  --secondary-active: var(--gray-950);
+  --secondary-active-fg: var(--gray-100);
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+pre,
+hr,
+table,
+fieldset,
+form,
+input,
+textarea,
+p,
+button,
+select,
+legend {
   margin: 0;
   padding: 0;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
 a {
   text-decoration: none;
+}
+
+button {
+  font-size: 1em;
+  border: 0;
+  background: var(--gray-700);
+  padding: 0.25em 1em;
+  color: var(--gray-300);
+  cursor: pointer;
+  &:hover {
+    background: var(--gray-800);
+  }
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
 }

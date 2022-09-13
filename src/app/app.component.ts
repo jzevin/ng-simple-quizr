@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
+
+import { Store } from '@ngrx/store';
+import { selectTheme } from './state/quiz.state.selectors';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'quizr';
+  @HostBinding('class') themeClass = '';
+  selectedTheme$ = this.store.select(selectTheme)
+  constructor(private store: Store) {
+    this.selectedTheme$.subscribe((theme) => (this.themeClass = `theme-${theme}`));
+  }
 }

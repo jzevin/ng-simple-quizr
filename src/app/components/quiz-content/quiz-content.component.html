@@ -3,6 +3,7 @@
   <div class="question">
     <p>{{ currentQuizItem.question }}</p>
   </div>
+  <hr>
   <ol class="options">
     <li class="option" *ngFor="let option of currentQuizItem.options;let i = index">
       {{ i + 1 }}. {{ option }}

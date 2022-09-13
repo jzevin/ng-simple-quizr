@@ -10,6 +10,8 @@ const initialQuizState: QuizState = {
   currentQuestionIndex: 0,
   error: null,
   loading: false,
+  theme: 'light',
+  zoom: 1,
 };
 
 export const quizStateReducer = createReducer(
@@ -56,6 +58,12 @@ export const quizStateReducer = createReducer(
     return {
       ...state,
       currentQuestionIndex: payload,
+    };
+  }),
+  on(quizActions.setTheme, (state, { payload }) => {
+    return {
+      ...state,
+      theme: payload,
     };
   })
 );

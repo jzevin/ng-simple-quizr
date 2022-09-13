@@ -3,6 +3,8 @@ export type QuizState = {
   currentQuestionIndex: number,
   error: Error | null,
   loading: boolean,
+  theme: 'light' | 'dark',
+  zoom: number,
 }
 
 export type QuizQuestion = {

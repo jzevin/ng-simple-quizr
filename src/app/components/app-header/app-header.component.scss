@@ -1,8 +1,11 @@
 header {
   display: flex;
-  margin-bottom: 1em;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 1em;
+  padding: 1em 0.5em;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--gray-950);
+  color: var(--gray-100);
+}
+.theme-btn {
+  margin-left: 0.25em;
 }
