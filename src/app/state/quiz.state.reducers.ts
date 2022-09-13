@@ -51,5 +51,11 @@ export const quizStateReducer = createReducer(
         ? state.currentQuestionIndex - 1
         : state.currentQuestionIndex,
     };
+  }),
+  on(quizActions.selectQuestionByIndex, (state, { payload }) => {
+    return {
+      ...state,
+      currentQuestionIndex: payload,
+    };
   })
 );
