@@ -1,4 +1,9 @@
-.active {
-  background-color: #f5f5f5;
-  outline: 1px solid #ccc;
+.question {
+  font-size: 0.65em;
+  cursor: pointer;
+  &.active {
+    font-weight: 900;
+    background-color: #f5f5f5;
+    outline: 1px solid #ccc;
+  }
 }
