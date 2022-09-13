@@ -34,7 +34,7 @@ describe('QuizContentComponent', () => {
   });
 
   it('should have a quizState$ property', () => {
-    expect(component.quizState$).toBeTruthy();
+    expect(component.currentQuestion$).toBeTruthy();
   });
 
   it('should have an element with a "question" class', () => {

@@ -1,6 +1,7 @@
 <ng-container *ngIf="currentQuestion$ | async as currentQuizItem">
   <!-- {{ currentQuizItem | json }} -->
   <div class="question">
+    <p class="subject">{{ currentQuizItem.subject }}</p>
     <p>{{ currentQuizItem.question }}</p>
   </div>
   <hr>
