@@ -25,5 +25,7 @@ export class AppHeaderComponent implements OnDestroy, OnInit {
     this.currentThemeSub$.unsubscribe();
   }
 
-
+  onClickZoom() {
+    this.store.dispatch(quizActions.setZoom());
+  }
 }

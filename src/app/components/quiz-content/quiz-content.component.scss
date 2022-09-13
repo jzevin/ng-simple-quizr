@@ -1,6 +1,9 @@
+@import 'src/sass/_mixins';
+
 :host {
   display: block;
   padding: 2em 4em;
+  @include transition;
 }
 .question {
   font-size: 1.5em;

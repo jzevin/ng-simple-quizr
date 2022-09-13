@@ -1,8 +1,10 @@
+@import 'src/sass/_mixins';
+
 .questions {
   background-color: var(--secondary-bg);
   color: var(--secondary-fg);
   min-width: 6em;
-  transition: 0.5s ease, color 0.5s ease;
+  @include transition;
 }
 
 .question {

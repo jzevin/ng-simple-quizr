@@ -12,5 +12,5 @@ export const quizActions = {
   previousQuestion: createAction('[Quiz Nav] Previous question'),
   nextQuestion: createAction('[Quiz Nav] Next question'),
   setTheme: createAction('[App] Set theme', props<{payload: 'light' | 'dark'}>()),
-  setZoom: createAction('[App] Set zoom', props<{payload: number}>()),
+  setZoom: createAction('[App] Set zoom'),
 }

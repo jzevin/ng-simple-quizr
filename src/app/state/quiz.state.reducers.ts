@@ -65,5 +65,13 @@ export const quizStateReducer = createReducer(
       ...state,
       theme: payload,
     };
+  }),
+  on(quizActions.setZoom, (state) => {
+    let zoom = state.zoom + 0.25;
+    if(zoom > 2) zoom = 1;
+    return {
+      ...state,
+      zoom,
+    };
   })
 );
