@@ -1,6 +1,6 @@
-import { createReducer, on } from "@ngrx/store";
+import { createReducer, on } from '@ngrx/store';
 
-import { QuizState } from "../models/quiz.models";
+import { QuizState } from '../models/quiz.models';
 import { quizActions } from './quiz.state.actions';
 
 // const initialQuizStateQuestions: ReadonlyArray<QuizQuestion[]> = [];
@@ -27,11 +27,29 @@ export const quizStateReducer = createReducer(
       loading: false,
     };
   }),
-  on(quizActions.loadQuestionsFailure, (state, {payload}) => {
+  on(quizActions.loadQuestionsFailure, (state, { payload }) => {
     return {
       ...state,
       error: payload,
       loading: false,
+    };
+  }),
+  on(quizActions.nextQuestion, (state) => {
+    const hasNextQuestion = state.questions[state.currentQuestionIndex + 1];
+    return {
+      ...state,
+      currentQuestionIndex: hasNextQuestion
+        ? state.currentQuestionIndex + 1
+        : state.currentQuestionIndex,
+    };
+  }),
+  on(quizActions.previousQuestion, (state) => {
+    const hasPreviousQuestion = state.questions[state.currentQuestionIndex - 1];
+    return {
+      ...state,
+      currentQuestionIndex: hasPreviousQuestion
+        ? state.currentQuestionIndex - 1
+        : state.currentQuestionIndex,
     };
   })
 );

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { selectAllQuestions, selectCurrentQuestionIndex } from 'src/app/state/quiz.state.selectors';
+
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'qzr-quiz-info',
@@ -7,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizInfoComponent implements OnInit {
 
-  constructor() { }
+  currentQuestionNumber$ = this.store.select(selectCurrentQuestionIndex).pipe(map((index) => index + 1));
+  totalQuestions$ = this.store.select(selectAllQuestions).pipe(map((questions) => questions.length));
+
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
