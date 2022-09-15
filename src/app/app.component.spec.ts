@@ -4,7 +4,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizContentComponent } from './components/quiz-content/quiz-content.component';
 import { QuizInfoComponent } from './components/quiz-info/quiz-info.component';
 import { QuizNavComponent } from './components/quiz-nav/quiz-nav.component';
-import { QuizOverviewComponent } from './components/quiz-overview/quiz-overview.component';
+import { QuizSidenavComponent } from './components/quiz-sidenav/quiz-sidenav.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TestBed } from '@angular/core/testing';
@@ -17,7 +17,7 @@ describe('AppComponent', () => {
         AppComponent,
         QuizComponent,
         AppHeaderComponent,
-        QuizOverviewComponent,
+        QuizSidenavComponent,
         QuizNavComponent,
         QuizContentComponent,
         QuizInfoComponent,

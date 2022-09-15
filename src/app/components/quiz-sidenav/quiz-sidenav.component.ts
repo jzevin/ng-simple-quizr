@@ -5,11 +5,11 @@ import { Store } from '@ngrx/store';
 import { quizActions } from '../../state/quiz.state.actions';
 
 @Component({
-  selector: 'qzr-quiz-overview',
-  templateUrl: './quiz-overview.component.html',
-  styleUrls: ['./quiz-overview.component.scss']
+  selector: 'qzr-quiz-sidenav',
+  templateUrl: './quiz-sidenav.component.html',
+  styleUrls: ['./quiz-sidenav.component.scss']
 })
-export class QuizOverviewComponent implements OnInit {
+export class QuizSidenavComponent implements OnInit {
 
   questions$ = this.store.select(selectAllQuestions);
   currentIndex$ = this.store.select(selectCurrentQuestionIndex);

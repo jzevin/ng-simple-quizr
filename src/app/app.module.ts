@@ -10,7 +10,7 @@ import { QuizContentComponent } from './components/quiz-content/quiz-content.com
 import { QuizEffects } from './state/quiz.state.effects';
 import { QuizInfoComponent } from './components/quiz-info/quiz-info.component';
 import { QuizNavComponent } from './components/quiz-nav/quiz-nav.component';
-import { QuizOverviewComponent } from './components/quiz-overview/quiz-overview.component';
+import { QuizSidenavComponent } from './components/quiz-sidenav/quiz-sidenav.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
@@ -24,7 +24,7 @@ import { quizStateReducer } from './state/quiz.state.reducers';
     QuizInfoComponent,
     QuizComponent,
     AppHeaderComponent,
-    QuizOverviewComponent
+    QuizSidenavComponent
   ],
   imports: [
   BrowserModule,
