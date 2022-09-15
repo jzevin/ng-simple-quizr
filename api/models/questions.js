@@ -388,7 +388,7 @@ const mathQuestions = [
   },
   {
     subject: "math",
-    question: "What is the value of x if 3(x+5)=33?",
+    question: "What is the value of x if 3(x+5)=36?",
     options: ["-4", "7", "11", "24"],
     answerIndex: 1,
   },
@@ -416,15 +416,15 @@ const mathQuestions = [
   {
     subject: "math",
     question: "What is 4/6 as a percent?",
-    options: [".6666666666666666666666666666667%", "66 2/3%", "16 2/3%", "25%"],
-    answerIndex: 1,
+    options: ["0.6667%", "66 2/3%", "16 2/3%", "25%"],
+    answerIndex: 0,
   },
 
   {
     subject: "math ",
     question: "If x=8, then what is the value of 4(x+2)?",
-    options: ["48", "168", "28", "56"],
-    answerIndex: 0,
+    options: ["48", "168", "40", "56"],
+    answerIndex: 2,
   },
   {
     subject: "math",
