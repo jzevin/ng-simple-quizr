@@ -40,6 +40,12 @@ export const selectAnswers = createSelector(
 export const selectCurrentAnswer = createSelector(
   quizFeature,
   selectAnswers,
-  (state, answers: QuizAnswers) => answers[state.questions[state.currentQuestionIndex].id],
+  (state, answers: QuizAnswers) => answers[state.questions[state.currentQuestionIndex]?.id],
+);
+
+export const selectCurrentQuestionAndAnswer = createSelector(
+  selectCurrentQuestion,
+  selectCurrentAnswer,
+  (question, answer) => ({ question, answer }),
 );
 

@@ -30,7 +30,9 @@ export const quizStateReducer = createReducer(
       answers: payload.reduce((acc, question) => {
         return {
           ...acc,
-          [question.id]: -1,
+          [question.id]: {
+            answerIndex: -1,
+          },
         };
       }, {}),
       loading: false,
@@ -86,7 +88,20 @@ export const quizStateReducer = createReducer(
       ...state,
       answers: {
         ...state.answers,
-        [state.questions[state.currentQuestionIndex].id]: payload,
+        [state.questions[state.currentQuestionIndex].id]: {answerIndex: payload},
+      },
+    };
+  }),
+  on(quizActions.lockAnswer, (state) => {
+    return {
+      ...state,
+      answers: {
+        ...state.answers,
+        [state.questions[state.currentQuestionIndex].id]: {
+          ...state.answers[state.questions[state.currentQuestionIndex].id],
+          isLocked: true,
+          isCorrect: state.questions[state.currentQuestionIndex].answerIndex === state.answers[state.questions[state.currentQuestionIndex].id].answerIndex
+        },
       },
     };
   }),

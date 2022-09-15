@@ -1,4 +1,4 @@
-@import 'src/sass/_mixins';
+@import "src/sass/_mixins";
 
 :host {
   display: block;
@@ -29,11 +29,32 @@ hr {
 
 .option {
   cursor: pointer;
+  &.locked {
+    cursor: not-allowed;
+    &:hover {
+      transform: unset;
+    }
+    text-decoration: line-through;
+  }
   &.picked {
     font-weight: 900;
-    &:after {
-      content: '✅';
-      margin-left: 0.5em;
+    text-decoration:unset;
+    position: relative;
+    &.correct {
+      color: var(--success, green);
+      &:after {
+        content: "✅";
+        position: absolute;
+        left: -1.5em;
+      }
+    }
+    &.incorrect {
+      color: var(--failure, red);
+      &:after {
+        content: "❌";
+        position: absolute;
+        left: -1.5em;
+      }
     }
   }
   &:hover {

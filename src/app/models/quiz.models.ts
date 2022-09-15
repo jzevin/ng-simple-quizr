@@ -17,5 +17,9 @@ export type QuizQuestion = {
 }
 
 export type QuizAnswers = {
-  [key: QuizQuestion['id']]: number
+  [key: QuizQuestion['id']]: {
+    answerIndex: number,
+    isLocked?: boolean,
+    isCorrect?: boolean
+  }
 }

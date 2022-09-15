@@ -1,13 +1,31 @@
-<ng-container *ngIf="currentQuestion$ | async as currentQuizItem">
-  <!-- {{ currentQuizItem | json }} -->
-  <div class="question">
-    <p class="subject">{{ currentQuizItem.subject }}</p>
-    <p>{{ currentQuizItem.question }}</p>
-  </div>
-  <hr>
-  <ol class="options">
-    <li class="option" [ngClass]="{'picked': i === (currentAnswer$ | async)}" *ngFor="let option of currentQuizItem.options;let i = index" (click)="onClickAnswer(i)">
+<!-- {{ vm$ | async | json }} -->
+<ng-container *ngIf="vm$ | async as vm">
+  <ng-container *ngIf="vm.question || vm.answer">
+    <div class="question">
+      <p class="subject">{{ vm.question.subject }}</p>
+      <p>{{ vm.question.question }}</p>
+    </div>
+    <hr />
+    <ol class="options">
+      <li class="option" [ngClass]="[vm.answer.isLocked ? 'locked':'', i === vm.answer.answerIndex ? 'picked' : '',getAnswerClass(vm)]" *ngFor="let option of vm.question.options;let i = index" (click)="onClickAnswer(i, vm.answer.isLocked || false)">
       {{ i + 1 }}. {{ option }}
     </li>
-  </ol>
+    </ol>
+    <hr />
+    
+    <div class="answer-lock" *ngIf="!vm.answer.isLocked">
+      <button [disabled]="vm.answer.answerIndex === -1" (click)="onClickLockAnswer()">lock in my answer</button>
+    </div>
+    
+    <div class="result" *ngIf="vm.answer.isLocked">
+      <div class="correct-result" *ngIf="vm.answer.isCorrect">
+        <div class="foo">Correct!!!</div>
+      </div>
+  
+      <div class="wrong-result" *ngIf="!vm.answer.isCorrect">
+        <div>Wrong, the correct answer is: <strong>{{ vm.question.options[vm.question.answerIndex] }}</strong></div>
+      </div>
+    </div>
+
+  </ng-container>
 </ng-container>
