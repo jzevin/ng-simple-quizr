@@ -1,3 +1,5 @@
 <ul class="questions" *ngIf="questions$ | async as questions">
-  <li class="question" *ngFor="let item of questions; let i = index" [ngClass]="{ 'active': (currentIndex$ | async) === i }" (click)="onClickQuestion(i)">Question #{{ i + 1 }}</li>
+  <li class="question" *ngFor="let item of questions; let i = index" [ngClass]="{ 'active': (currentIndex$ | async) === i }" (click)="onClickQuestion(i)">
+    <button>Question #{{ i + 1 }}</button>
+  </li>
 </ul>
