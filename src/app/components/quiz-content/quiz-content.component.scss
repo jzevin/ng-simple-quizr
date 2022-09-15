@@ -60,4 +60,14 @@ hr {
   &:hover {
     transform: scale(1.0125);
   }
+  button {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: inherit;
+  }
 }

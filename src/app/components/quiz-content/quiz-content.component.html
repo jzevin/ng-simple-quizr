@@ -1,6 +1,6 @@
-<!-- {{ vm$ | async | json }} -->
 <ng-container *ngIf="vm$ | async as vm">
   <ng-container *ngIf="vm.question || vm.answer">
+
     <div class="question">
       <p class="subject">{{ vm.question.subject }}</p>
       <p>{{ vm.question.question }}</p>
@@ -8,7 +8,7 @@
     <hr />
     <ol class="options">
       <li class="option" [ngClass]="[vm.answer.isLocked ? 'locked':'', i === vm.answer.answerIndex ? 'picked' : '',getAnswerClass(vm)]" *ngFor="let option of vm.question.options;let i = index" (click)="onClickAnswer(i, vm.answer.isLocked || false)">
-      {{ i + 1 }}. {{ option }}
+      <button>{{ i + 1 }}. {{ option }}</button>
     </li>
     </ol>
     <hr />
