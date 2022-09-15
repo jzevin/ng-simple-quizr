@@ -10,7 +10,7 @@ const initialQuizState: QuizState = {
   answers: {},
   currentQuestionIndex: 0,
   error: null,
-  loading: false,
+  loading: true,
   theme: 'light',
   zoom: 1,
 };
@@ -26,7 +26,7 @@ export const quizStateReducer = createReducer(
   on(quizActions.loadQuestionsSuccess, (state, { payload }) => {
     return {
       ...state,
-      questions: payload,
+      questions: payload.slice(0,20).sort(() => Math.random() - 0.5),
       answers: payload.reduce((acc, question) => {
         return {
           ...acc,

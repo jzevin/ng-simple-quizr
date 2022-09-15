@@ -1,3 +1,10 @@
+@import 'src/sass/_mixins';
+
+:host, .main {
+  display: block;
+  height: 100%;
+}
+
 .main {
   display: flex;
   align-items: flex-start;
@@ -8,7 +15,9 @@
 }
 .left {
   flex: 0 0 auto;
+  @include heightToScroll;
 }
 .right {
   flex: 1 1 auto;
+  @include heightToScroll;
 }

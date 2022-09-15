@@ -1,9 +1,14 @@
 @import 'src/sass/_mixins';
 
+:host {
+  display: block;
+  height: 100%;
+}
 .questions {
   background-color: var(--secondary-bg);
   color: var(--secondary-fg);
   min-width: 6em;
+  height: 100%;
   @include transition;
 }
 
