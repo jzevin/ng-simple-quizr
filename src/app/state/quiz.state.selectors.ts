@@ -1,6 +1,5 @@
+import { QuizAnswers, QuizState } from 'src/app/models/quiz.models';
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-
-import { QuizState } from 'src/app/models/quiz.models';
 
 const quizFeature = createFeatureSelector<QuizState>('quiz');
 export const selectQuizState = createSelector(
@@ -31,5 +30,16 @@ export const selectTheme = createSelector(
 export const selectZoom = createSelector(
   quizFeature,
   (state: QuizState) => state.zoom,
+);
+
+export const selectAnswers = createSelector(
+  quizFeature,
+  (state: QuizState) => state.answers,
+);
+
+export const selectCurrentAnswer = createSelector(
+  quizFeature,
+  selectAnswers,
+  (state, answers: QuizAnswers) => answers[state.questions[state.currentQuestionIndex].id],
 );
 

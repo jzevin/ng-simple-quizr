@@ -26,3 +26,17 @@ hr {
   margin: 1em 0;
   opacity: 0.35;
 }
+
+.option {
+  cursor: pointer;
+  &.picked {
+    font-weight: 900;
+    &:after {
+      content: '✅';
+      margin-left: 0.5em;
+    }
+  }
+  &:hover {
+    transform: scale(1.0125);
+  }
+}

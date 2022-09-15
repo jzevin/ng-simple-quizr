@@ -1,5 +1,6 @@
 export type QuizState = {
   questions: ReadonlyArray<QuizQuestion>,
+  answers: QuizAnswers,
   currentQuestionIndex: number,
   error: Error | null,
   loading: boolean,
@@ -13,4 +14,8 @@ export type QuizQuestion = {
   question: string,
   options: string[],
   answerIndex: number
+}
+
+export type QuizAnswers = {
+  [key: QuizQuestion['id']]: number
 }

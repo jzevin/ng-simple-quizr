@@ -7,6 +7,7 @@ import { quizActions } from './quiz.state.actions';
 
 const initialQuizState: QuizState = {
   questions: [],
+  answers: {},
   currentQuestionIndex: 0,
   error: null,
   loading: false,
@@ -26,6 +27,12 @@ export const quizStateReducer = createReducer(
     return {
       ...state,
       questions: payload,
+      answers: payload.reduce((acc, question) => {
+        return {
+          ...acc,
+          [question.id]: -1,
+        };
+      }, {}),
       loading: false,
     };
   }),
@@ -73,5 +80,14 @@ export const quizStateReducer = createReducer(
       ...state,
       zoom,
     };
-  })
+  }),
+  on(quizActions.answerQuestion, (state, { payload }) => {
+    return {
+      ...state,
+      answers: {
+        ...state.answers,
+        [state.questions[state.currentQuestionIndex].id]: payload,
+      },
+    };
+  }),
 );

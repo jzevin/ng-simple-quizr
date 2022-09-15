@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizQuestion, QuizState } from 'src/app/models/quiz.models';
-import { selectCurrentQuestion, selectCurrentQuestionIndex, selectQuizState } from '../../state/quiz.state.selectors';
+import { selectCurrentAnswer, selectCurrentQuestion } from '../../state/quiz.state.selectors';
 
 import { Observable } from 'rxjs';
+import { QuizQuestion } from 'src/app/models/quiz.models';
 import { Store } from '@ngrx/store';
 import { quizActions } from '../../state/quiz.state.actions';
 
@@ -14,12 +14,16 @@ import { quizActions } from '../../state/quiz.state.actions';
 export class QuizContentComponent implements OnInit {
 
   currentQuestion$: Observable<QuizQuestion> = this.store.select(selectCurrentQuestion);
-  currentQuestionIndex$: Observable<number> = this.store.select(selectCurrentQuestionIndex);
+  currentAnswer$ = this.store.select(selectCurrentAnswer);
 
   constructor(private store: Store) { }
 
   ngOnInit(): void {
     this.store.dispatch(quizActions.loadQuestions());
+  }
+
+  onClickAnswer(answerIndex: number) {
+    this.store.dispatch(quizActions.answerQuestion({ payload: answerIndex }));
   }
 
 }
