@@ -1,5 +1,17 @@
-<ul class="questions" *ngIf="questions$ | async as questions">
-  <li class="question" *ngFor="let item of questions; let i = index" [ngClass]="{ 'active': (currentIndex$ | async) === i }" (click)="onClickQuestion(i)">
-    <button>Question #{{ i + 1 }}</button>
-  </li>
-</ul>
+<ng-container *ngIf="questions$ | async as questions">
+  <ng-container *ngIf="answers$ | async as answers">
+    
+    <ul class="questions">
+      <li class="question" *ngFor="let item of questions; let i = index" [ngClass]="{ 'active': (currentIndex$ | async) === i }" (click)="onClickQuestion(i)">
+        <button>
+          <span>Question #{{ i + 1 }}</span>
+          <span class="result-icon" *ngIf="answers[item.id].isLocked">
+            <ng-container *ngIf="answers[item.id].isCorrect; else elseBlock" >✅</ng-container>
+            <ng-template #elseBlock>❌</ng-template>
+          </span>
+        </button>
+      </li>
+    </ul>
+  
+  </ng-container>
+</ng-container>

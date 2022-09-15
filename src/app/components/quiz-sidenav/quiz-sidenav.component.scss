@@ -3,11 +3,12 @@
 :host {
   display: block;
   height: 100%;
+  user-select: none;
 }
 .questions {
   background-color: var(--secondary-bg);
   color: var(--secondary-fg);
-  min-width: 6em;
+  min-width: 6.5em;
   height: 100%;
   @include transition;
 }
@@ -31,5 +32,13 @@
     color: inherit;
     font: inherit;
     cursor: inherit;
+    display: flex;
+    align-items: center;
+    span {
+      display: inline-flex;
+      &.result-icon {
+        margin-left: 0.75em;
+      }
+    }
   }
 }

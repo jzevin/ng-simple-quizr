@@ -3,6 +3,7 @@ import { selectAllQuestions, selectCurrentQuestionIndex } from 'src/app/state/qu
 
 import { Store } from '@ngrx/store';
 import { quizActions } from '../../state/quiz.state.actions';
+import { selectAnswers } from '../../state/quiz.state.selectors';
 
 @Component({
   selector: 'qzr-quiz-sidenav',
@@ -12,6 +13,7 @@ import { quizActions } from '../../state/quiz.state.actions';
 export class QuizSidenavComponent implements OnInit {
 
   questions$ = this.store.select(selectAllQuestions);
+  answers$ = this.store.select(selectAnswers);
   currentIndex$ = this.store.select(selectCurrentQuestionIndex);
 
   constructor(private store: Store) {}

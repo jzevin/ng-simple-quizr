@@ -345,7 +345,9 @@ const historyQuestions = [
     question: "Who were the two main combatants in World War II?",
     options: [
       "United States and Great Britain",
-      "France and Germany','Soviet Union and China','Japan and Australia",
+      "France and Germany",
+      "Soviet Union and China",
+      "Japan and Australia",
     ],
     answerIndex: 2,
   },
