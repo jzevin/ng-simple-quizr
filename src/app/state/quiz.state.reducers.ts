@@ -83,7 +83,7 @@ export const quizStateReducer = createReducer(
   }),
   on(quizActions.setZoom, (state) => {
     let zoom = state.zoom + 0.25;
-    if(zoom > 2) zoom = 1;
+    if(zoom > 1.5) zoom = 1;
     return {
       ...state,
       zoom,
