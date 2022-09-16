@@ -1,4 +1,5 @@
 import { AppComponent } from './app.component';
+import { AppErrorsComponent } from './components/app-errors/app-errors.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizContentComponent } from './components/quiz-content/quiz-content.component';
@@ -13,10 +14,11 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, StoreModule.forRoot({})],
-      declarations: [
+declarations: [
         AppComponent,
         QuizComponent,
         AppHeaderComponent,
+        AppErrorsComponent,
         QuizSidenavComponent,
         QuizNavComponent,
         QuizContentComponent,

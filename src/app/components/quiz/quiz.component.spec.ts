@@ -5,7 +5,7 @@ import { QuizContentComponent } from '../quiz-content/quiz-content.component';
 import { QuizInfoComponent } from '../quiz-info/quiz-info.component';
 import { QuizNavComponent } from '../quiz-nav/quiz-nav.component';
 import { QuizSidenavComponent } from '../quiz-sidenav/quiz-sidenav.component';
-import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('QuizComponent', () => {
   let component: QuizComponent;
@@ -13,7 +13,6 @@ describe('QuizComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({})],
       declarations: [
         QuizComponent,
         QuizNavComponent,
@@ -21,6 +20,7 @@ describe('QuizComponent', () => {
         QuizContentComponent,
         QuizInfoComponent,
       ],
+      providers: [provideMockStore({})],
     }).compileComponents();
 
     fixture = TestBed.createComponent(QuizComponent);

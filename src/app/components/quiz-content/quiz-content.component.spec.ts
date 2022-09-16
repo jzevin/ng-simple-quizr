@@ -1,11 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { DebugElement } from '@angular/core';
 import { QuizContentComponent } from './quiz-content.component';
 import { provideMockStore } from '@ngrx/store/testing';
 
 describe('QuizContentComponent', () => {
   let component: QuizContentComponent;
   let fixture: ComponentFixture<QuizContentComponent>;
+  let elDebug: DebugElement;
+  let el: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,19 +17,40 @@ describe('QuizContentComponent', () => {
         provideMockStore({
           initialState: {
             quiz: {
-              currentQuestion: undefined,
-              questions: [],
+              questions: [
+                {
+                  subject: 'history',
+                  question:
+                    'Which ocean lies on the western coast of South America?',
+                  options: [
+                    'Pacific Ocean',
+                    'Atlantic Ocean',
+                    'Indian Ocean',
+                    'Southern Ocean',
+                  ],
+                  id: 'r2m0epr4lku8zjv2kx',
+                },
+              ],
+              currentQuestionIndex: 0,
+              answers: {
+                r2m0epr4lku8zjv2kx: {
+                  answerIndex: -1,
+                },
+              },
+              errors: [],
               loading: false,
-              error: null,
+              theme: 'light',
+              zoom: 1,
             },
           },
         }),
       ],
     }).compileComponents();
-
     fixture = TestBed.createComponent(QuizContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    el = fixture.nativeElement as HTMLElement;
+    elDebug = fixture.debugElement;
   });
 
   it('should create', () => {
@@ -38,12 +62,12 @@ describe('QuizContentComponent', () => {
   });
 
   it('should have an element with a "question" class', () => {
-    expect(fixture.nativeElement.querySelector('.question')).toBeTruthy();
+    expect(el.querySelector('.question')).toBeTruthy();
   });
 
-  it('should have at least one element with an "answer" class', () => {
+  it('should have at least one element with an "option" class', () => {
     expect(
-      fixture.nativeElement.querySelectorAll('.answer').length
+      fixture.nativeElement.querySelectorAll('.option').length
     ).toBeGreaterThan(0);
   });
 });
