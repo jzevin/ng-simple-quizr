@@ -28,4 +28,9 @@ export class AppHeaderComponent implements OnDestroy, OnInit {
   onClickZoom() {
     this.store.dispatch(quizActions.setZoom());
   }
+
+  onClickReset() {
+    this.store.dispatch(quizActions.resetQuiz());
+    this.store.dispatch(quizActions.loadQuestions());
+  }
 }

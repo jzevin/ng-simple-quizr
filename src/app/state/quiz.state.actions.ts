@@ -9,7 +9,7 @@ export const quizActions = {
   selectQuestionByIndex: createAction('[User] Select question by index', props<{payload: number}>()),
   answerQuestion: createAction('[User] Answer question', props<{payload: number}>()),
   lockAnswer: createAction('[User] Lock answer',),
-  resetQuiz: createAction('[App] Reset quiz'),
+  resetQuiz: createAction('[User] Reset quiz'),
   previousQuestion: createAction('[User] Previous question'),
   nextQuestion: createAction('[User] Next question'),
   setTheme: createAction('[User] Set theme', props<{payload: 'light' | 'dark'}>()),

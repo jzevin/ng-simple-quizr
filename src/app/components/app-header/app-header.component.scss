@@ -9,6 +9,6 @@ header {
   color: var(--gray-100);
   @include transition;
 }
-.theme-btn {
-  margin-left: 0.25em;
+.theme-btn, .reset-btn {
+  margin-left: 0.125em;
 }

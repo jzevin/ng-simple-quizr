@@ -111,4 +111,9 @@ export const quizStateReducer = createReducer(
       },
     };
   }),
+  on(quizActions.resetQuiz, (state) => {
+    return {
+      ...initialQuizState,
+    };
+  }),
 );
