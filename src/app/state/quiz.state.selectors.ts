@@ -49,3 +49,7 @@ export const selectCurrentQuestionAndAnswer = createSelector(
   (question, answer) => ({ question, answer }),
 );
 
+export const selectErrors = createSelector(
+  quizFeature,
+  (state: QuizState) => state.errors,
+);

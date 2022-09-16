@@ -1,5 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
-import { selectTheme, selectZoom } from './state/quiz.state.selectors';
+import { selectAllQuestions, selectTheme, selectZoom } from './state/quiz.state.selectors';
 
 import { Store } from '@ngrx/store';
 

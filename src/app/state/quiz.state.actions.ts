@@ -14,4 +14,5 @@ export const quizActions = {
   nextQuestion: createAction('[User] Next question'),
   setTheme: createAction('[User] Set theme', props<{payload: 'light' | 'dark'}>()),
   setZoom: createAction('[User] Set zoom'),
+  closeError: createAction('[User] Close error', props<{payload: number}>()),
 }

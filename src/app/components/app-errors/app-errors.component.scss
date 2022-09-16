@@ -1,0 +1,22 @@
+.errors {
+  display: flex;
+  flex-wrap: wrap;
+  color: #fff;
+  background-color: #f44336;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.error {
+  display: flex;
+  flex: 1 1 100%;
+  align-items: center;
+  justify-content: space-between;
+  // margin: 0.25em;
+  padding: 0.25em 0.5em;
+  border-bottom: 1px solid hsla(0, 100%, 14%, 0.1);
+  &:last-child {
+    border-bottom: none;
+  }
+}
+

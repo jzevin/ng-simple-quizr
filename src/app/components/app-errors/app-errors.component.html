@@ -1,0 +1,10 @@
+<ol class="errors">
+  <li class="error" *ngFor="let error of errors$ | async; let i = index">
+    <div class="message">
+      {{ error.message }}
+    </div>
+    <div class="actions">
+      <button class="close" (click)="onClickClose(i)">x</button>
+    </div>
+  </li>
+</ol>

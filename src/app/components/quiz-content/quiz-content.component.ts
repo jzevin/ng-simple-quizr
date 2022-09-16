@@ -20,7 +20,7 @@ export class QuizContentComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.store.dispatch(quizActions.loadQuestions());
+    //
   }
 
   onClickAnswer(answerIndex: number, isLocked: boolean) {

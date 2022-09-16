@@ -9,7 +9,7 @@ const initialQuizState: QuizState = {
   questions: [],
   answers: {},
   currentQuestionIndex: 0,
-  error: null,
+  errors: [],
   loading: true,
   theme: 'light',
   zoom: 1,
@@ -41,8 +41,14 @@ export const quizStateReducer = createReducer(
   on(quizActions.loadQuestionsFailure, (state, { payload }) => {
     return {
       ...state,
-      error: payload,
+      errors: [...state.errors, payload],
       loading: false,
+    };
+  }),
+  on(quizActions.closeError, (state, { payload }) => {
+    return {
+      ...state,
+      errors: state.errors.filter((_, index) => index !== payload),
     };
   }),
   on(quizActions.nextQuestion, (state) => {

@@ -1,4 +1,4 @@
-<div class="main">
+<div *ngIf="(questions$ | async)?.length" class="main">
   <div class="left">
     <qzr-quiz-sidenav></qzr-quiz-sidenav>
   </div>

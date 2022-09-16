@@ -2,7 +2,7 @@ export type QuizState = {
   questions: ReadonlyArray<QuizQuestion>,
   answers: QuizAnswers,
   currentQuestionIndex: number,
-  error: Error | null,
+  errors: Error[],
   loading: boolean,
   theme: 'light' | 'dark',
   zoom: number,

@@ -15,6 +15,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { quizStateReducer } from './state/quiz.state.reducers';
+import { AppErrorsComponent } from './components/app-errors/app-errors.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { quizStateReducer } from './state/quiz.state.reducers';
     QuizInfoComponent,
     QuizComponent,
     AppHeaderComponent,
-    QuizSidenavComponent
+    QuizSidenavComponent,
+    AppErrorsComponent
   ],
   imports: [
   BrowserModule,
