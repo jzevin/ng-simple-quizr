@@ -38,10 +38,11 @@ hr {
   }
   &.picked {
     font-weight: 900;
-    text-decoration:unset;
+    text-decoration: underline;
     position: relative;
     &.correct {
       color: var(--success, green);
+      text-decoration: unset;
       &:after {
         content: "✅";
         position: absolute;
@@ -50,6 +51,7 @@ hr {
     }
     &.incorrect {
       color: var(--failure, red);
+      text-decoration: unset;
       &:after {
         content: "❌";
         position: absolute;
@@ -69,5 +71,6 @@ hr {
     color: inherit;
     font: inherit;
     cursor: inherit;
+    text-decoration: inherit;
   }
 }
