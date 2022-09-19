@@ -7,7 +7,7 @@ import { QuizIntroComponent } from './quiz-intro.component';
 import { initialQuizState } from '../../state/quiz.state.reducers';
 import { provideMockStore } from '@ngrx/store/testing';
 
-fdescribe('QuizIntroComponent', () => {
+describe('QuizIntroComponent', () => {
   let component: QuizIntroComponent;
   let fixture: ComponentFixture<QuizIntroComponent>;
   let elDebug: DebugElement;
