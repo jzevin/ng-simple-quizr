@@ -3,40 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { QuizInfoComponent } from '../quiz-info/quiz-info.component';
 import { QuizNavComponent } from './quiz-nav.component';
+import { QuizStateTestFixture } from 'src/app/testing/quiz.state.fixtures';
 import { initialQuizState } from 'src/app/state/quiz.state.reducers';
 import { provideMockStore } from '@ngrx/store/testing';
 
-const questions = [{
-  subject: 'math',
-  question: 'What is 7 times 6?',
-  options: [
-    '42',
-    '36',
-    '49',
-    '14'
-  ],
-  answerIndex: 1,
-  id: 'y5lv4glt9gyrpys40y'
-},
-{
-  subject: 'geography',
-  question: 'Which river forms the border between India and Bangladesh? ',
-  options: [
-    'Ganges River',
-    'Indus River',
-    'Brahmaputra River'
-  ],
-  answerIndex: 2,
-  id: 'iiclv88q8hmt79hu8m'
-}]
-const answers = {
-  y5lv4glt9gyrpys40y: {
-    answerIndex: -1
-  },
-  iiclv88q8hmt79hu8m: {
-    answerIndex: -1
-  },
-}
 describe('QuizNavComponent', () => {
   let component: QuizNavComponent;
   let fixture: ComponentFixture<QuizNavComponent>;
@@ -48,11 +18,7 @@ describe('QuizNavComponent', () => {
       declarations: [QuizNavComponent, QuizInfoComponent],
       providers: [provideMockStore({
         initialState: {
-          quiz: {
-            ...initialQuizState,
-            questions: [...questions],
-            answers: answers,
-          },
+          quiz: QuizStateTestFixture,
         }
       })],
     }).compileComponents();
