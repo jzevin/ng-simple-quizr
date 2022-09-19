@@ -1,8 +1,9 @@
 <qzr-app-errors></qzr-app-errors>
 <qzr-app-header></qzr-app-header>
 <section>
-  <main>
-    <!-- <router-outlet></router-outlet> -->
-    <qzr-quiz></qzr-quiz>
+  <main *ngIf="panel$ | async as panel">
+    <qzr-quiz-intro *ngIf="panel === 'intro'" style="color: white">INTRO</qzr-quiz-intro>
+    <qzr-quiz *ngIf="panel === 'questions'"></qzr-quiz>
+    <qzr-quiz-results *ngIf="panel === 'results'" style="color: white">Results</qzr-quiz-results>
   </main>
 </section>

@@ -1,0 +1,18 @@
+<div class="form-wrap">
+  <h1>Welcome!</h1>
+  <p>Make your selections and begin.</p>
+  <form (submit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="">Num Questions: (5-50)</label>
+      <input type="number" name="numberOfQuestions" min="5" max="50" value="5" [(ngModel)]="vm.options.numberOfQuestions">
+    </div>
+
+    <div class="form-group">
+      <label for="">Randomize</label>
+      <input type="checkbox" name="shouldRandomize" value="5" [(ngModel)]="vm.options.shouldRandomize">
+    </div>
+    
+    <button>Begin</button>
+  </form>
+</div>

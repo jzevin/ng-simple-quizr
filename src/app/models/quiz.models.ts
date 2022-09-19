@@ -1,3 +1,5 @@
+export type QuizStatePanels = 'intro' | 'questions' | 'results';
+
 export type QuizState = {
   questions: ReadonlyArray<QuizQuestion>,
   answers: QuizAnswers,
@@ -6,6 +8,8 @@ export type QuizState = {
   loading: boolean,
   theme: 'light' | 'dark',
   zoom: number,
+  panel: QuizStatePanels,
+  quizOptions: QuizOptions,
 }
 
 export type QuizQuestion = {
@@ -22,4 +26,9 @@ export type QuizAnswers = {
     isLocked?: boolean,
     isCorrect?: boolean
   }
+}
+
+export type QuizOptions = {
+  numberOfQuestions: number,
+  shouldRandomize: boolean,
 }

@@ -1,6 +1,5 @@
+import { QuizOptions, QuizQuestion, QuizStatePanels } from "../models/quiz.models";
 import { createAction, props } from "@ngrx/store";
-
-import { QuizQuestion } from "../models/quiz.models";
 
 export const quizActions = {
   loadQuestions: createAction('[App] Load questions'),
@@ -15,4 +14,6 @@ export const quizActions = {
   setTheme: createAction('[User] Set theme', props<{payload: 'light' | 'dark'}>()),
   setZoom: createAction('[User] Set zoom'),
   closeError: createAction('[User] Close error', props<{payload: number}>()),
+  setQuizOptions: createAction('[User] Set number of questions', props<{payload: QuizOptions}>()),
+  setQuizPanel: createAction('[App] Set quiz panel', props<{payload: QuizStatePanels}>()),
 }

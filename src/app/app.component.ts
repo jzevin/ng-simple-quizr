@@ -1,5 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
-import { selectAllQuestions, selectTheme, selectZoom } from './state/quiz.state.selectors';
+import { selectAllQuestions, selectPanel, selectTheme, selectZoom } from './state/quiz.state.selectors';
 
 import { Store } from '@ngrx/store';
 
@@ -13,6 +13,7 @@ export class AppComponent {
   @HostBinding('style.fontSize') fontSize = '1em';
   selectedTheme$ = this.store.select(selectTheme);
   zoom$ = this.store.select(selectZoom);
+  panel$ = this.store.select(selectPanel);
 
   constructor(private store: Store) {
     this.selectedTheme$.subscribe((theme) => (this.themeClass = `theme-${theme}`));

@@ -53,3 +53,13 @@ export const selectErrors = createSelector(
   quizFeature,
   (state: QuizState) => state.errors,
 );
+
+export const selectPanel = createSelector(
+  quizFeature,
+  (state: QuizState) => state.panel,
+);
+
+export const selectQuizOptions = createSelector(
+  quizFeature,
+  (state: QuizState) => state.quizOptions,
+);
