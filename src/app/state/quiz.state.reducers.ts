@@ -5,7 +5,7 @@ import { quizActions } from './quiz.state.actions';
 
 // const initialQuizStateQuestions: ReadonlyArray<QuizQuestion[]> = [];
 
-const initialQuizState: QuizState = {
+export const initialQuizState: QuizState = {
   questions: [],
   answers: {},
   currentQuestionIndex: 0,
