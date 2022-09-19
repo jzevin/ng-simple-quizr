@@ -10,12 +10,12 @@ const initialQuizState: QuizState = {
   answers: {},
   currentQuestionIndex: 0,
   errors: [],
-  loading: true,
+  isLoading: false,
   theme: 'light',
   zoom: 1,
   panel: 'intro',
   quizOptions: {
-    numberOfQuestions: 20,
+    numberOfQuestions: 10,
     shouldRandomize: true,
   },
 };
@@ -25,17 +25,17 @@ export const quizStateReducer = createReducer(
   on(quizActions.loadQuestions, (state) => {
     return {
       ...state,
-      loading: true,
+      isLoading: true,
     };
   }),
   on(quizActions.loadQuestionsSuccess, (state, { payload }) => {
-    const questions = payload.slice(0,state.quizOptions.numberOfQuestions);
+    const questions = payload.slice(0,-1);
     if(state.quizOptions.shouldRandomize) {
       questions.sort(() => Math.random() - 0.5);
     }
     return {
       ...state,
-      questions,
+      questions: questions.slice(0, state.quizOptions.numberOfQuestions),
       answers: payload.reduce((acc, question) => {
         return {
           ...acc,
@@ -44,14 +44,14 @@ export const quizStateReducer = createReducer(
           },
         };
       }, {}),
-      loading: false,
+      isLoading: false,
     };
   }),
   on(quizActions.loadQuestionsFailure, (state, { payload }) => {
     return {
       ...state,
       errors: [...state.errors, payload],
-      loading: false,
+      isLoading: false,
     };
   }),
   on(quizActions.closeError, (state, { payload }) => {
@@ -123,6 +123,7 @@ export const quizStateReducer = createReducer(
   on(quizActions.resetQuiz, (state) => {
     return {
       ...initialQuizState,
+      quizOptions: state.quizOptions,
     };
   }),
   on(quizActions.setQuizOptions, (state, { payload }) => {

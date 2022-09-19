@@ -21,3 +21,19 @@
   flex: 1 1 auto;
   @include heightToScroll;
 }
+
+.loading {
+  display: flex;
+  height: 1em;
+  background: var(--blue-500);
+  animation: loading 5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

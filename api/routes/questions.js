@@ -7,7 +7,9 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.json(questions);
+  setTimeout(() => {
+    res.json(questions);
+  }, 2000);
 });
 
 module.exports = router;

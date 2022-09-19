@@ -3,6 +3,7 @@ import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { quizActions } from 'src/app/state/quiz.state.actions';
 import { selectAllQuestions } from 'src/app/state/quiz.state.selectors';
+import { selectIsLoading } from '../../state/quiz.state.selectors';
 
 @Component({
   selector: 'qzr-quiz',
@@ -11,10 +12,11 @@ import { selectAllQuestions } from 'src/app/state/quiz.state.selectors';
 })
 export class QuizComponent implements OnInit {
   questions$ = this.store.select(selectAllQuestions);
+  isLoading$ = this.store.select(selectIsLoading);
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.store.dispatch(quizActions.loadQuestions());
+    //this.store.dispatch(quizActions.loadQuestions());
   }
 
   @HostListener('window:keyup', ['$event']) onKeyup(event: KeyboardEvent) {

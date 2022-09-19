@@ -12,6 +12,11 @@ export const selectAllQuestions = createSelector(
   (state: QuizState) => state.questions,
 );
 
+export const selectIsLoading = createSelector(
+  quizFeature,
+  (state: QuizState) => state.isLoading,
+);
+
 export const selectCurrentQuestion = createSelector(
   quizFeature,
   (state: QuizState) => state.questions[state.currentQuestionIndex],

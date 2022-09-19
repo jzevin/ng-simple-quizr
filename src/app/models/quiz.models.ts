@@ -5,7 +5,7 @@ export type QuizState = {
   answers: QuizAnswers,
   currentQuestionIndex: number,
   errors: Error[],
-  loading: boolean,
+  isLoading: boolean,
   theme: 'light' | 'dark',
   zoom: number,
   panel: QuizStatePanels,

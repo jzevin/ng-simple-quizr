@@ -1,3 +1,6 @@
+<ng-container *ngIf="isLoading$ | async as isLoading">
+  <div class="loading"></div>
+</ng-container>
 <div *ngIf="(questions$ | async)?.length" class="main">
   <div class="left">
     <qzr-quiz-sidenav></qzr-quiz-sidenav>
