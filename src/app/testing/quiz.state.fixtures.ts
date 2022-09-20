@@ -11,7 +11,7 @@ const questions = [{
     '49',
     '14'
   ],
-  answerIndex: 1,
+  answerIndex: 0,
   id: 'y5lv4glt9gyrpys40y'
 },
 {
@@ -38,5 +38,5 @@ const answers = {
 export const QuizStateTestFixture = {
   ...initialQuizState,
   questions: [...questions],
-  answers: answers,
+  answers,
 } as QuizState;
