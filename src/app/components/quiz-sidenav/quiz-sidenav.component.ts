@@ -12,9 +12,9 @@ import { selectAnswers } from '../../state/quiz.state.selectors';
 })
 export class QuizSidenavComponent implements OnInit {
 
-  questions$ = this.store.select(selectAllQuestions);
-  answers$ = this.store.select(selectAnswers);
-  currentIndex$ = this.store.select(selectCurrentQuestionIndex);
+  readonly questions$ = this.store.select(selectAllQuestions);
+  readonly answers$ = this.store.select(selectAnswers);
+  readonly currentIndex$ = this.store.select(selectCurrentQuestionIndex);
 
   constructor(private store: Store) {}
 
