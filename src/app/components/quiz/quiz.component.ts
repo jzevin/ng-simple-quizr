@@ -10,14 +10,11 @@ import { selectIsLoading } from '../../state/quiz.state.selectors';
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent implements OnInit {
-  questions$ = this.store.select(selectAllQuestions);
-  isLoading$ = this.store.select(selectIsLoading);
-  constructor(private store: Store) { }
+export class QuizComponent {
+  readonly questions$ = this.store.select(selectAllQuestions);
+  readonly isLoading$ = this.store.select(selectIsLoading);
 
-  ngOnInit(): void {
-    //this.store.dispatch(quizActions.loadQuestions());
-  }
+  constructor(private store: Store) {}
 
   @HostListener('window:keyup', ['$event']) onKeyup(event: KeyboardEvent) {
     const key = event.key;
