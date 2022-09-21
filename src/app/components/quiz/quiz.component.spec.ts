@@ -12,7 +12,7 @@ import { QuizStateTestFixture } from 'src/app/testing/quiz.state.fixtures';
 import { selectAllQuestions } from 'src/app/state/quiz.state.selectors';
 import { selectIsLoading } from '../../state/quiz.state.selectors';
 
-describe('QuizComponent', () => {
+fdescribe('QuizComponent', () => {
   let component: QuizComponent;
   let fixture: ComponentFixture<QuizComponent>;
   let el: HTMLElement;
