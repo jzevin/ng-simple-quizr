@@ -12,11 +12,12 @@ export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
       localStorageLog = JSON.parse(localStorageLogString);
     } else {
       localStorage.clear();
-      console.log('------------ 📝 BEGIN LOG 📝 ------------');
+      console.log('%c------ ✅ BEGIN QUIZR LOG ✅ ------', "color:#eee; font-size:36px; font-weight: bold");
     }
     localStorageLog.push([action, state]);
     localStorage.setItem(quizSessionId, JSON.stringify(localStorageLog));
-    // 
+    //
+    console.log(`%c${action.type}`, "color:#eee; font-size:18px; font-weight: bold");
     console.log('state', state);
     console.log('action', action);
     // 
