@@ -18,6 +18,7 @@ export const initialQuizState: QuizState = {
     numberOfQuestions: 10,
     shouldRandomize: true,
   },
+  quizSessionId:(Math.random() * 200000).toString(36).replace('.','')
 };
 
 export const quizStateReducer = createReducer(

@@ -10,6 +10,7 @@ export type QuizState = {
   zoom: number,
   panel: QuizStatePanels,
   quizOptions: QuizOptions,
+  quizSessionId: string
 }
 
 export type QuizQuestion = {

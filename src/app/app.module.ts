@@ -17,6 +17,7 @@ import { QuizResultsComponent } from './components/quiz-results/quiz-results.com
 import { QuizSidenavComponent } from './components/quiz-sidenav/quiz-sidenav.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { debug } from "./state/state.meta.reducers";
 import { environment } from '../environments/environment';
 import { quizStateReducer } from './state/quiz.state.reducers';
 
@@ -38,7 +39,7 @@ import { quizStateReducer } from './state/quiz.state.reducers';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    StoreModule.forRoot({'quiz': quizStateReducer}),
+    StoreModule.forRoot({'quiz': quizStateReducer}, {metaReducers: [debug]}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([QuizEffects])
   ],
