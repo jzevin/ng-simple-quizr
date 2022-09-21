@@ -1,8 +1,12 @@
-<header>
-  <h1>Quizr</h1>
-  <div class="app-settings">
-    <button (click)="onClickZoom()">Zoom</button>
-    <button class="theme-btn" (click)="onClickToggleTheme()">{{theme === 'light' ? 'dark' : 'light'}} theme</button>
-    <button class="reset-btn" (click)="onClickReset()">Reset</button>
-  </div>
-</header>
+<ng-container *ngIf="currentTheme$ | async as currentTheme">
+
+  <header>
+    <h1>Quizr</h1>
+    <div class="app-settings">
+      <button (click)="onClickZoom()">Zoom</button>
+      <button class="theme-btn" (click)="onClickToggleTheme(currentTheme)">{{currentTheme === 'light' ? 'dark' : 'light'}} theme</button>
+      <button class="reset-btn" (click)="onClickReset()">Reset</button>
+    </div>
+  </header>
+
+</ng-container>

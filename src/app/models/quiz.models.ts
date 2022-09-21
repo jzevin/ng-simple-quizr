@@ -1,12 +1,14 @@
 export type QuizStatePanels = 'intro' | 'questions' | 'results';
 
+export type QuizThemes = 'light' | 'dark';
+
 export type QuizState = {
   questions: ReadonlyArray<QuizQuestion>,
   answers: QuizAnswers,
   currentQuestionIndex: number,
   errors: Error[],
   isLoading: boolean,
-  theme: 'light' | 'dark',
+  theme: QuizThemes,
   zoom: number,
   panel: QuizStatePanels,
   quizOptions: QuizOptions,

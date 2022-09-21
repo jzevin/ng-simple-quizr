@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { QuizThemes } from 'src/app/models/quiz.models';
 import { Store } from '@ngrx/store';
 import { quizActions } from 'src/app/state/quiz.state.actions';
 import { selectTheme } from '../../state/quiz.state.selectors';
@@ -7,22 +8,15 @@ import { selectTheme } from '../../state/quiz.state.selectors';
 @Component({
   selector: 'qzr-app-header',
   templateUrl: './app-header.component.html',
-  styleUrls: ['./app-header.component.scss']
+  styleUrls: ['./app-header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppHeaderComponent implements OnDestroy, OnInit {
-  theme = '';
-  currentThemeSub$ = this.store.select(selectTheme).subscribe((theme) => this.theme = theme);
-  constructor(private store: Store) { }
+export class AppHeaderComponent {
+  currentTheme$ = this.store.select(selectTheme);
+  constructor(private store: Store) {}
 
-  ngOnInit(): void {
-  }
-
-  onClickToggleTheme() {
-    this.store.dispatch(quizActions.setTheme({ payload: this.theme === 'light' ? 'dark' : 'light' }));
-  }
-
-  ngOnDestroy() {
-    this.currentThemeSub$.unsubscribe();
+  onClickToggleTheme(theme: QuizThemes) {
+    this.store.dispatch(quizActions.setTheme({ payload: theme === 'light' ? 'dark' : 'light' }));
   }
 
   onClickZoom() {
