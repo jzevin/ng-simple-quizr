@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, combineLatest, forkJoin, merge, mergeAll } from 'rxjs';
-import { selectCurrentAnswer, selectCurrentQuestion, selectCurrentQuestionAndAnswer } from '../../state/quiz.state.selectors';
+import { Observable, combineLatest } from 'rxjs';
+import { selectCurrentAnswer, selectCurrentQuestion } from '../../state/quiz.state.selectors';
 
+import { Component } from '@angular/core';
 import { QuizQuestion } from 'src/app/models/quiz.models';
 import { Store } from '@ngrx/store';
 import { quizActions } from '../../state/quiz.state.actions';
@@ -11,17 +11,13 @@ import { quizActions } from '../../state/quiz.state.actions';
   templateUrl: './quiz-content.component.html',
   styleUrls: ['./quiz-content.component.scss']
 })
-export class QuizContentComponent implements OnInit {
+export class QuizContentComponent {
 
-  currentQuestion$: Observable<QuizQuestion> = this.store.select(selectCurrentQuestion);
-  currentAnswer$ = this.store.select(selectCurrentAnswer);
-  vm$ = combineLatest({question: this.currentQuestion$, answer: this.currentAnswer$});
+  readonly currentQuestion$: Observable<QuizQuestion> = this.store.select(selectCurrentQuestion);
+  readonly currentAnswer$ = this.store.select(selectCurrentAnswer);
+  readonly vm$ = combineLatest({question: this.currentQuestion$, answer: this.currentAnswer$});
   
-  constructor(private store: Store) { }
-
-  ngOnInit(): void {
-    //
-  }
+  constructor(private store: Store) {}
 
   onClickAnswer(answerIndex: number, isLocked: boolean) {
     if (isLocked) {

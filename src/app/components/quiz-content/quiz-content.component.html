@@ -1,13 +1,13 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <ng-container *ngIf="vm.question || vm.answer">
+  <ng-container *ngIf="vm.question && vm.answer">
 
     <div class="question">
       <p class="subject">{{ vm.question.subject }}</p>
-      <p>{{ vm.question.question }}</p>
+      <p class="question-text">{{ vm.question.question }}</p>
     </div>
     <hr />
     <ol class="options">
-      <li class="option" [ngClass]="[vm.answer.isLocked ? 'locked':'', i === vm.answer.answerIndex ? 'picked' : '',getAnswerClass(vm)]" *ngFor="let option of vm.question.options;let i = index" (click)="onClickAnswer(i, vm.answer.isLocked || false)">
+      <li class="option" [ngClass]="[vm.answer.isLocked ? 'locked':'', i === vm.answer.answerIndex ? 'picked' : '', getAnswerClass(vm)]" *ngFor="let option of vm.question.options;let i = index" (click)="onClickAnswer(i, vm.answer.isLocked || false)">
       <button>{{ i + 1 }}. {{ option }}</button>
     </li>
     </ol>
@@ -19,7 +19,7 @@
     
     <div class="result" *ngIf="vm.answer.isLocked">
       <div class="correct-result" *ngIf="vm.answer.isCorrect">
-        <div class="foo">Correct!!!</div>
+        <div>Correct!!!</div>
       </div>
   
       <div class="wrong-result" *ngIf="!vm.answer.isCorrect">
