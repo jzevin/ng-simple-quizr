@@ -1,18 +1,22 @@
-<div class="form-wrap">
-  <h1>Welcome!</h1>
-  <p>Make your selections and begin.</p>
-  <form (submit)="onSubmit()">
+<ng-container *ngIf="QuizOptions$ | async as quizOptions">
+  
+  <div class="form-wrap">
+    <h1>Welcome!</h1>
+    <p>Make your selections and begin.</p>
+    <form (submit)="onSubmit(numberOfQuestions.value, shouldRandomize.checked)">
+  
+      <div class="form-group">
+        <label for="">Number Questions: (1-50)</label>
+        <input #numberOfQuestions type="number" name="numberOfQuestions" min="1" max="50" [value]="quizOptions.numberOfQuestions">
+      </div>
+  
+      <div class="form-group">
+        <label for="">Randomize</label>
+        <input #shouldRandomize type="checkbox" name="shouldRandomize" [checked]="quizOptions.shouldRandomize">
+      </div>
+      
+      <button>Begin</button>
+    </form>
+  </div>
 
-    <div class="form-group">
-      <label for="">Number Questions: (1-50)</label>
-      <input type="number" name="numberOfQuestions" min="1" max="50" [(ngModel)]="vm.options.numberOfQuestions">
-    </div>
-
-    <div class="form-group">
-      <label for="">Randomize</label>
-      <input type="checkbox" name="shouldRandomize" [(ngModel)]="vm.options.shouldRandomize">
-    </div>
-    
-    <button>Begin</button>
-  </form>
-</div>
+</ng-container>
