@@ -4,7 +4,7 @@
     <h1>Quizr</h1>
     <div class="app-settings">
       <button class="zoom-btn" (click)="onClickZoom()">Zoom</button>
-      <button class="theme-btn" (click)="onClickToggleTheme(currentTheme)">{{currentTheme === 'light' ? 'dark' : 'light'}} theme</button>
+      <button class="theme-btn" (click)="onClickToggleTheme(currentTheme === 'light' ? 'dark' : 'light')">{{currentTheme === 'light' ? 'dark' : 'light'}} theme</button>
       <button class="reset-btn" (click)="onClickReset()">Reset</button>
     </div>
   </header>

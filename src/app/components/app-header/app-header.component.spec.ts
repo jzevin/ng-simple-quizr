@@ -5,6 +5,7 @@ import { QuizState, QuizThemes } from 'src/app/models/quiz.models';
 import { AppHeaderComponent } from './app-header.component';
 import { DebugElement } from '@angular/core';
 import { MemoizedSelector } from '@ngrx/store';
+import { QuizStateTestFixture } from 'src/app/testing/quiz.state.fixtures';
 import { selectTheme } from 'src/app/state/quiz.state.selectors';
 
 describe('AppHeaderComponent', () => {
@@ -24,7 +25,7 @@ describe('AppHeaderComponent', () => {
     mockStore = TestBed.inject(MockStore);
     mockSelectTheme = mockStore.overrideSelector(
       selectTheme,
-      'dark'
+      QuizStateTestFixture.theme
     );
     fixture = TestBed.createComponent(AppHeaderComponent);
     component = fixture.componentInstance;
@@ -53,17 +54,17 @@ describe('AppHeaderComponent', () => {
     const btns = el.querySelectorAll('.app-settings button');
     expect(btns.length).toEqual(3);
     expect(btns[0].textContent).toContain('Zoom');
-    expect(btns[1].textContent).toContain('light theme');
+    expect(btns[1].textContent).toContain('dark theme');
     expect(btns[2].textContent).toContain('Reset');
   });
 
   it('should have the right button text when the theme is switched', () => {
     const themeBtn = el.querySelector('.theme-btn') as HTMLButtonElement;
-    expect(themeBtn.textContent).toContain('light theme');
-    mockSelectTheme.setResult('light');
+    expect(themeBtn.textContent).toContain('dark theme');
+    mockSelectTheme.setResult('dark');
     mockStore.refreshState();
     fixture.detectChanges();
-    expect(themeBtn.textContent).toContain('dark theme');
+    expect(themeBtn.textContent).toContain('light theme');
   });
 
   //theme btn
@@ -71,9 +72,19 @@ describe('AppHeaderComponent', () => {
     const compSpy = spyOn(component, 'onClickToggleTheme');
     const themeBtn = el.querySelector('.theme-btn') as HTMLButtonElement;
     themeBtn.click();
-    fixture.detectChanges();
     expect(compSpy).toHaveBeenCalled();
     expect(compSpy).toHaveBeenCalledWith('dark');
+  });
+
+  it('should call onClickToggleTheme when theme btn is clicked', () => {
+    const compSpy = spyOn(component, 'onClickToggleTheme');
+    mockSelectTheme.setResult('light')
+    mockStore.refreshState();
+    fixture.detectChanges();
+    const themeBtn = el.querySelector('.theme-btn') as HTMLButtonElement;
+    themeBtn.click();
+    expect(compSpy).toHaveBeenCalledWith('dark');
+    expect(compSpy).toHaveBeenCalled();
   });
 
   it('should dispatch "[User] Set theme" when theme btn is clicked', () => {

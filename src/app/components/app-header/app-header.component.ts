@@ -15,8 +15,10 @@ export class AppHeaderComponent {
   currentTheme$ = this.store.select(selectTheme);
   constructor(private store: Store) {}
 
-  onClickToggleTheme(theme: QuizThemes) {
-    this.store.dispatch(quizActions.setTheme({ payload: theme === 'light' ? 'dark' : 'light' }));
+  onClickToggleTheme(newTheme: QuizThemes) {
+    this.store.dispatch(quizActions.setTheme({
+      payload: newTheme
+    }));
   }
 
   onClickZoom() {
