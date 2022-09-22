@@ -10,7 +10,7 @@ import { selectAnswers } from '../../state/quiz.state.selectors';
   templateUrl: './quiz-sidenav.component.html',
   styleUrls: ['./quiz-sidenav.component.scss']
 })
-export class QuizSidenavComponent implements OnInit {
+export class QuizSidenavComponent {
 
   readonly questions$ = this.store.select(selectAllQuestions);
   readonly answers$ = this.store.select(selectAnswers);
@@ -18,11 +18,7 @@ export class QuizSidenavComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  ngOnInit(): void {
-  }
-
   onClickQuestion(index: number) {
     this.store.dispatch(quizActions.selectQuestionByIndex({ payload: index }));
   }
-
 }
