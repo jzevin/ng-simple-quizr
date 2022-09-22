@@ -140,6 +140,23 @@ describe('QuizContentComponent', () => {
     expect(compSpy).toHaveBeenCalledTimes(4);
   });
 
+  it('should have have an onClickAnswer method and and return since isLocked', () => {
+    mockSelectCurrentAnswer.setResult(
+      {
+        ...answer,
+        answerIndex: 0,
+        isLocked: true
+      }
+    );
+    mockStore.refreshState();
+    fixture.detectChanges();
+    const compSpy = spyOn(component, 'onClickAnswer');
+    const optionElement = el.querySelectorAll('.option')[0];
+    (optionElement as HTMLLIElement).click();
+    expect(compSpy).toHaveBeenCalledWith(0, true)
+    expect(compSpy).toHaveBeenCalled();
+  });
+
   it('should call onClickAnswer and dispatch "[User] Answer question"', () => {
     const optionElements = el.querySelectorAll('.option');
     (optionElements[0] as HTMLLIElement).click();
@@ -169,6 +186,22 @@ describe('QuizContentComponent', () => {
     fixture.detectChanges();
     (buttonEL as HTMLButtonElement).click();
     expect(compSpy).toHaveBeenCalled();
+  });
+
+  it('should call onClickLockAnswer and dispatch "[User] Lock answer"', () => {
+    mockSelectCurrentAnswer.setResult(
+      {
+        ...answer,
+        answerIndex: 0
+      }
+    );
+    mockStore.refreshState();
+    fixture.detectChanges();
+    const lockBtn = el.querySelector('.answer-lock-btn');
+    (lockBtn as HTMLLIElement).click();
+    mockStore.scannedActions$.subscribe(action => {
+      expect(action.type).toBe('[User] Lock answer');
+    })
   });
 
   it('should not have a .result element', () => {

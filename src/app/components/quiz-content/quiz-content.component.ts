@@ -20,10 +20,7 @@ export class QuizContentComponent {
   constructor(private store: Store) {}
 
   onClickAnswer(answerIndex: number, isLocked: boolean) {
-    if (isLocked) {
-      return;
-    }
-    this.store.dispatch(quizActions.answerQuestion({ payload: answerIndex }));
+    isLocked || this.store.dispatch(quizActions.answerQuestion({ payload: answerIndex }));
   }
 
   onClickLockAnswer() {

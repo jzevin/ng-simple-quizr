@@ -14,7 +14,7 @@
     <hr />
     
     <div class="answer-lock" *ngIf="!vm.answer.isLocked">
-      <button [disabled]="vm.answer.answerIndex === -1" (click)="onClickLockAnswer()">lock in my answer</button>
+      <button class="answer-lock-btn" [disabled]="vm.answer.answerIndex === -1" (click)="onClickLockAnswer()">lock in my answer</button>
     </div>
     
     <div class="result" *ngIf="vm.answer.isLocked">
