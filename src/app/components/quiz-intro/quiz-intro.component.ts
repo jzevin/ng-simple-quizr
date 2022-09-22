@@ -24,7 +24,5 @@ export class QuizIntroComponent {
         },
       })
     );
-    this.store.dispatch(quizActions.setQuizPanel({ payload: 'questions' }));
-    this.store.dispatch(quizActions.loadQuestions());
   }
 }

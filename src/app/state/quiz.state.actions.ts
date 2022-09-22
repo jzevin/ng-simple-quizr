@@ -14,6 +14,6 @@ export const quizActions = {
   setTheme: createAction('[User] Set theme', props<{payload: 'light' | 'dark'}>()),
   setZoom: createAction('[User] Set zoom'),
   closeError: createAction('[User] Close error', props<{payload: number}>()),
-  setQuizOptions: createAction('[User] Set number of questions', props<{payload: QuizOptions}>()),
+  setQuizOptions: createAction('[User] Set quiz options', props<{payload: QuizOptions}>()),
   setQuizPanel: createAction('[App] Set quiz panel', props<{payload: QuizStatePanels}>()),
 }

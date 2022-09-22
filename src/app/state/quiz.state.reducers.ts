@@ -130,6 +130,7 @@ export const quizStateReducer = createReducer(
   on(quizActions.setQuizOptions, (state, { payload }) => {
     return {
       ...state,
+      panel: 'questions',
       quizOptions: {
         ...state.quizOptions,
         ...payload,
