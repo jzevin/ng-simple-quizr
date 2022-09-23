@@ -1,9 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { QuizState } from '../models/quiz.models';
+import { QuizAnswers, QuizQuestion, QuizState } from '../models/quiz.models';
 import { quizActions } from './quiz.state.actions';
 
 // const initialQuizStateQuestions: ReadonlyArray<QuizQuestion[]> = [];
+
+export const initAnswersFromQuestions = (questions: ReadonlyArray<QuizQuestion>) => {
+  return questions.reduce((acc, question) => {
+    return {
+      ...acc,
+      [question.id]: {
+        answerIndex: -1,
+      },
+    };
+  }, {}) as QuizAnswers;
+};
 
 export const initialQuizState: QuizState = {
   questions: [],
@@ -30,21 +41,14 @@ export const quizStateReducer = createReducer(
     };
   }),
   on(quizActions.loadQuestionsSuccess, (state, { payload }) => {
-    const questions = payload.slice(0,-1);
+    const questions = payload.slice(0);
     if(state.quizOptions.shouldRandomize) {
       questions.sort(() => Math.random() - 0.5);
     }
     return {
       ...state,
       questions: questions.slice(0, state.quizOptions.numberOfQuestions),
-      answers: payload.reduce((acc, question) => {
-        return {
-          ...acc,
-          [question.id]: {
-            answerIndex: -1,
-          },
-        };
-      }, {}),
+      answers: initAnswersFromQuestions(questions),
       isLoading: false,
     };
   }),
@@ -80,9 +84,10 @@ export const quizStateReducer = createReducer(
     };
   }),
   on(quizActions.selectQuestionByIndex, (state, { payload }) => {
+    const maxIndex = state.questions.length - 1;
     return {
       ...state,
-      currentQuestionIndex: payload,
+      currentQuestionIndex: payload > maxIndex ? state.currentQuestionIndex : payload,
     };
   }),
   on(quizActions.setTheme, (state, { payload }) => {
