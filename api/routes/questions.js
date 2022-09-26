@@ -7,9 +7,13 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  setTimeout(() => {
+  if(req.query.delay) {
+    setTimeout(() => {
+      res.json(questions);
+    }, req.query.delay);
+  } else {
     res.json(questions);
-  }, 2000);
+  }
 });
 
 module.exports = router;
